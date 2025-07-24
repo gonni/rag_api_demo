@@ -1,6 +1,4 @@
-임베딩 생성 완료: models/faiss_vs_rag_iap_v2_03_exaone3.
-
-🤖 RAG 체인 테스트 시작
+✅ 임베딩 생성 완료: models/faiss_vs_rag_iap_v2_03_exaone3.
 
 🤖 RAG 체인 테스트 시작
 
@@ -245,123 +243,6 @@ public class PaymentNotificationController {
 ================================================================================
 
 
-
-
-================================================================================
-
-📝 질문 1: 원스토어의 PNS란 무엇이고 어떻게 구현하나요? 메시지 수신 서버의 관점에서 Java Spring으로 구현한 코드를 예제를 알려주세요
-------------------------------------------------------------
-원스토어의 **PNS (Payment Notification Service)**는 결제 관련 알림 메시지를 수신하고 처리하기 위한 서비스입니다. 개발자는 PNS를 통해 결제 상태 변경, 구매 확인, 취소 내역 등의 알림을 서버에서 수신할 수 있습니다. PNS를 구현하는 과정은 주로 수신 서버 설정과 메시지 처리 로직 구현으로 나뉩니다.
-
-### 메시지 수신 서버 관점에서의 구현 예시 (Java Spring)
-
-아래는 Java Spring 기반으로 PNS 메시지 수신 서버를 구현하는 간단한 예제입니다. 이 예제에서는 Spring Boot와 Spring WebFlux를 사용하여 비동기 메시지 수신 서버를 구현합니다.
-
-#### 1. 프로젝트 설정
-먼저 Maven 또는 Gradle을 사용하여 프로젝트를 설정하고 필요한 의존성을 추가합니다.
-
-**pom.xml (Maven 예시)**
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-webflux</artifactId>
-        <version>2.7.5</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind- fasterxml</artifactId>
-    </dependency>
-</dependencies>
-```
-
-#### 2. 메시지 수신 컨트롤러 및 서비스 구현
-
-**PaymentNotificationController.java**
-```java
-package com.example.paymentnotificationservice;
-
-import com.example.paymentnotificationservice.model.PaymentNotificationMessage;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.BodyInject;
-import org.springframework.web.reactive.function.ServerHttpRequest;
-import reactor.core.publisher.Mono;
-
-@RestController
-public class PaymentNotificationController {
-
-    // 메시지 수신 핸들러 메서드
-    @PostMapping("/payment-notifications")
-    public Mono<String> handlePaymentNotification(@BodyInject @RequestBody PaymentNotificationMessage message) {
-        // 메시지 처리 로직 구현
-        System.out.println("Received Payment Notification: " + message);
-
-        // 실제 구현에서는 메시지를 저장하거나 다른 서비스로 전달하는 등의 작업을 수행합니다.
-        return Mono.just("Notification Received");
-    }
-}
-```
-
-**PaymentNotificationMessage.java**
-```java
-package com.example.paymentnotificationservice.model;
-
-public class PaymentNotificationMessage {
-    private String notificationId;
-    private String purchaseId;
-    private String transactionStatus; // 결제 상태 정보
-    private String timestamp; // 타임스탬프
-
-    // 생성자, Getter, Setter 메서드들
-    public String getNotificationId() {
-        return notificationId;
-    }
-
-    public void setNotificationId(String notificationId) {
-        this.notificationId = notificationId;
-    }
-
-    public String getPurchaseId() {
-        return purchaseId;
-    }
-
-    public void setPurchaseId(String purchaseId) {
-        this.purchaseId = purchaseId;
-    }
-
-    public String getTransactionStatus() {
-        return transactionStatus;
-    }
-
-    public void setTransactionStatus(String transactionStatus) {
-        this.transactionStatus = transactionStatus;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-}
-```
-
-### 주요 포인트
-- **Spring Boot WebFlux**를 사용하여 비동기 HTTP 서버를 구현합니다.
-- `/payment-notifications` 엔드포인트를 통해 메시지를 수신합니다.
-- `PaymentNotificationMessage` 클래스는 PNS에서 수신한 메시지의 구조를 정의합니다.
-- 실제 구현에서는 메시지를 데이터베이스에 저장하거나 다른 서비스로 전달하는 등의 추가 로직을 포함해야 합니다.
-
-이 예제는 기본적인 구조를 제공하며, 실제 환경에서는 보안, 오류 처리, 로깅 등 추가적인 고려사항이 필요합니다.
-================================================================================
-
 ✅ 임베딩 생성 완료: models/faiss_vs_rag_iap_v2_03_deepseek
 
 🤖 RAG 체인 테스트 시작
@@ -485,6 +366,12 @@ public class Notification {
 ================================================================================
 
 
+
+
+
+
+
+✅ 임베딩 생성 완료: models/faiss_vs_rag_iap_v2_03_mistral
 
 🤖 RAG 체인 테스트 시작
 
