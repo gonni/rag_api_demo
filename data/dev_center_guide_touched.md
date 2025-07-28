@@ -2111,10 +2111,10 @@ Content-type: application/json;charset=UTF-8
 #### 개요 
 원스토어는 개발자를 위해 두 가지 Payment Notification Service를 제공합니다.
 * PNS는 Payment Notification Service의 약자입니다.
-* PNS는 모바일의 네트워크 연결 불안정성을 보완하기 위해 개발사가 지정한 서버로 개별 사용자의 결제 상태(결제 완료, 결제 취소)를 메시지로 전송하는 기능입니다.
-* 정확히는 개발사가 지정한 서버에서 원스토어가 정의한 규칙에 맞추어 API를 구현하면 해당 API를 원스토어의 결제 담당 서버에서 호출하는 형태입니다.
-* Server to Server라고 할지라도 네트워크 문제로 메세지 전송 실패가 발생하기 때문에 200 OK로 응답을 인지하지 못할 경우 반복하여 메시지가 전송될 수 있습니다.
-아래의 결제 트랜젝션 변화에 대하여 Notification 메시지가 전송됩니다.
+* PNS는 모바일의 네트워크 연결 불안정성을 보완하기 위해 개발사가 지정한 서버로 원스토어의 서버가 개별 사용자의 결제 상태(결제 완료, 결제 취소)를 메시지로 전송하여 결제 트랜젝션의 상태를 손실없이 알려주기 위한 용도의 기능입니다.
+* 즉, 개발사가 지정한 서버에서 원스토어가 정의한 규칙에 맞추어 API를 구현하면 해당 API를 원스토어의 결제 담당 서버에서 호출하는 형태입니다.
+* Server to Server, 즉 서버간에 데이터를 전송한다고 할지라도 네트워크 문제로 메세지 전송 실패가 발생하기 때문에 200 OK로 응답을 인지하지 못할 경우 반복하여 메시지가 전송될 수 있습니다. 개발사의 서버는 메시지를 수신후 정의된 응답을 하여야 원스토어는 개발사 서버가 정상적으로 메시지를 전달 받았음을 인지합니다.
+결제 트렌젝션의 유형에 따라 아래와 같은 유형의 메세지가 전송됩니다.
 
 - 인앱상품 결제 또는 결제취소가 발생하면 원스토어가 개발사 서버로 알림을 전송하는 PNS(Payment Notification Service) 
 
@@ -2133,6 +2133,7 @@ URL은 Sandbox(개발용) 결제환경 및 상용(상용테스트 포함) 결제
 > - packageName 파라미터가 clientId로 변경 되었으며, 3.0.0 이하 버전에서는 변경 사항이 없습니다.
 
 ##### Payment Notification 메시지 발송 규격 (원스토어가 개발사 서버 API를 호출할 때의 규격) 
+야래는 사용자가 결제시 원스토어의 결제 시스템에서 개발사의 서버로 발송하는 메세지에 포함된 요소들이다. 해당 요소들은 HTTP/JSON 형태의 메세지로 개발사로 전달된다.
 - URI : 개발자 센터에서 설정한 Payment Notification URL
 - Method : POST
 - Request Parameters : N/A
@@ -2162,8 +2163,8 @@ Content-Type: application/json
   - marketCode : 마켓 구분코드 ( MKT_ONE : 원스토어, MKT_STM : 스톰 )
   - signature : 본 메시지에 대한 signature
 
-- Example
-<pre><code>
+아래는 실제 전송되는 PNS 결제 완료의 Json message의 예시이다.
+```json
 {
 	"msgVersion" : "3.1.0"
 	"clientId":"0000000001",
@@ -2193,7 +2194,7 @@ Content-Type: application/json
 	"marketCode" : "MKT_ONE"
 	"signature" "SIGNATURE..."
 }
-</code></pre>
+```
 
 ##### paymentMethod(원스토어 결제수단) 정의
 아래는 paymentMethod: 결제수단 명칭(설명) 정의
