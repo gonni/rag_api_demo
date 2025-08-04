@@ -9,9 +9,10 @@ from langchain_ollama import OllamaEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import MarkdownHeaderTextSplitter
 from langchain.schema import BaseRetriever
-from langchain_community.retrievers import FAISSRetriever
+# FAISSRetriever는 더 이상 별도로 import할 필요가 없습니다
 import json
 from datetime import datetime
+import torch
 
 class DocumentSplitterExperiment:
     def __init__(self, markdown_file_path: str):
@@ -284,7 +285,12 @@ class DocumentSplitterExperiment:
     
     def create_vectorstore(self, docs: List[Document], strategy_name: str) -> FAISS:
         """벡터 스토어를 생성합니다."""
-        embeddings = OllamaEmbeddings(model="nomic-embed-text")
+        # GPU 사용을 위한 설정
+        print(f"CUDA 사용 가능: {torch.cuda.is_available()}")
+        if torch.cuda.is_available():
+            print(f"GPU 메모리: {torch.cuda.get_device_properties(0).total_memory / 1e9:.1f}GB")
+        
+        embeddings = OllamaEmbeddings(model="exaone3.5:latest")
         vectorstore = FAISS.from_documents(docs, embeddings)
         return vectorstore
     

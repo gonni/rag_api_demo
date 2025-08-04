@@ -1,0 +1,44 @@
+# RAG 실험을 위한 핵심 패키지들
+langchain==0.3.6
+langchain-community==0.3.4
+langchain-ollama==0.2.0
+langchain-text-splitters==0.3.1
+langchain-core==0.3.14
+
+# 벡터 스토어 및 임베딩
+faiss-cpu==1.9.0
+
+# GPU 지원 (선택사항)
+torch==2.5.1
+torchvision==0.20.1
+
+# 데이터 처리 및 시각화
+pandas==2.2.3
+matplotlib==3.9.2
+seaborn==0.13.2
+numpy==1.26.4
+
+# 문서 처리
+beautifulsoup4==4.12.3
+markdown==3.7
+
+# HTTP 클라이언트
+requests==2.32.3
+httpx==0.27.2
+
+# 유틸리티
+python-dotenv==1.0.1
+tqdm==4.66.6
+pathlib2==2.3.7
+
+# Ollama 클라이언트
+ollama==0.3.3
+
+# JSON 처리
+orjson==3.10.10
+
+# 날짜/시간 처리
+python-dateutil==2.8.2
+
+# 타입 힌트 지원
+typing-extensions==4.12.2 
