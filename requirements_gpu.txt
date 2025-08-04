@@ -10,10 +10,11 @@ langchain-core==0.3.14
 # 벡터 스토어 (GPU 지원)
 faiss-cpu==1.9.0
 
-# GPU 지원 (CUDA 포함)
-torch==2.5.1+cu121
-torchvision==0.20.1+cu121
---extra-index-url https://download.pytorch.org/whl/cu121
+# GPU 지원 (CUDA 12.4 포함)
+torch==2.5.1+cu124
+torchvision==0.20.1+cu124
+torchaudio==2.5.1+cu124
+--extra-index-url https://download.pytorch.org/whl/cu124
 
 # 데이터 처리 및 시각화
 pandas==2.2.3
