@@ -1,0 +1,25 @@
+# RAG 시스템 테스트를 위한 패키지들
+
+# LangChain 관련
+langchain>=0.1.0
+langchain-community>=0.0.10
+
+# 임베딩 모델 관련 (Ollama 기반)
+# sentence-transformers는 제거하고 Ollama 기반으로 변경
+
+# 벡터 스토어
+faiss-cpu>=1.7.4
+
+# LLM 관련
+ollama>=0.1.0
+
+# 데이터 처리
+numpy>=1.24.0
+pandas>=2.0.0
+
+# 유틸리티
+tqdm>=4.65.0
+requests>=2.31.0
+
+# 로깅 및 디버깅
+rich>=13.0.0 
