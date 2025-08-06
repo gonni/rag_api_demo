@@ -5128,7 +5128,7 @@ URL은 Sandbox(개발용) 결제환경 및 상용(상용테스트 포함) 결제
 | purchaseId         | String        | 구매 ID                                                                         |                                       |
 | developerPayload   | String        | 구매건을 식별하기 위해 개발사에서 관리하는 식별자                                                   |                                       |
 | purchaseTimeMillis | Long          | 원스토어 결제 시스템에서 결제가 완료된 시간(ms)                                                  |                                       |
-| purcahseState      | String        | COMPLETED : 결제완료 / CANCELED : 취소                                              |                                       |
+| purchaseState      | String        | COMPLETED : 결제완료 / CANCELED : 취소                                              |                                       |
 | price              | String        | 결제 금액                                                                         |                                       |
 | priceCurrencyCode  | String        | 결제 금액 통화코드(KRW, USD, ...)                                                     |                                       |
 | productName        | String        | 구매요청 시 개발사가 customized 인앱상품 제목을 설정한 경우 전달                                     |                                       |

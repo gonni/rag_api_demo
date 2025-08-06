@@ -1,0 +1,15 @@
+1. contextual retrieval 기능을 구현하여 테스트해보려고 합니다.
+2. 코드나 파일은 simul_10 디렉토리에 생성해주십쇼.
+3. Document의 page_context에 아래의 prompt를 적용하여 생성된 텍스트를 page_context 상단에 추가하여 Document List를 재생성하려고 합니다. 해당 prompt처리에 llm은 exaone3.5을 우선 사용합니다.
+---
+<document> 
+{{WHOLE_DOCUMENT}} 
+</document> 
+Here is the chunk we want to situate within the whole document 
+<chunk> 
+{{CHUNK_CONTENT}} 
+</chunk> 
+Please give a short succinct context to situate this chunk within the overall document for the purposes of improving search retrieval of the chunk. Answer only with the succinct context and nothing else. 
+---
+4. 코드는 ipynb로 우선 작성해주세요.
+=====
