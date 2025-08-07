@@ -74,7 +74,7 @@ Please give a short succinct context to situate this chunk within the overall do
 def test_document_enhancement():
     """Test document enhancement functionality."""
     
-    from contextual_retrieval import ContextualRetrieval
+    from code_dev.contextual_retrieval_old import ContextualRetrieval
     
     # Create a simple test document
     test_doc = Document(
