@@ -1,0 +1,27 @@
+# GPU 지원 RAG 실험을 위한 Docker 이미지
+FROM nvidia/cuda:12.4-devel-ubuntu22.04
+
+# Python 3.11 설치
+RUN apt-get update && apt-get install -y \
+    python3.11 \
+    python3.11-pip \
+    python3.11-dev \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python 심볼릭 링크 생성
+RUN ln -s /usr/bin/python3.11 /usr/bin/python
+
+WORKDIR /app
+
+# GPU 요구사항 설치
+COPY requirements_gpu.txt .
+RUN pip install -r requirements_gpu.txt
+
+# 애플리케이션 코드 복사
+COPY . .
+
+# Ollama 서버를 위한 포트 노출
+EXPOSE 11434 8000
+
+CMD ["python", "simul_02/rag_chain_test.py"]

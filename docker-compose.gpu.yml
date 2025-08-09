@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  rag-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile.gpu
+    volumes:
+      - ./data:/app/data
+      - ./result:/app/result
+      - ./simul_02:/app/simul_02
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    ports:
+      - "8000:8000"
+      - "11434:11434"
+    command: python simul_02/rag_chain_test.py
+
+  # 개발용 서비스 (GPU 없이 로컬에서 실행)
+  rag-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8000"
+    profiles:
+      - dev

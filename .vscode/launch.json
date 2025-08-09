@@ -1,0 +1,54 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug RAG Chain Test",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/simul_02/rag_chain_test.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "justMyCode": false
+        },
+        {
+            "name": "Debug Complete Test",
+            "type": "python", 
+            "request": "launch",
+            "program": "${workspaceFolder}/simul_02/run_complete_test.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "Debug GPU Optimized RAG",
+            "type": "python",
+            "request": "launch", 
+            "program": "${workspaceFolder}/simul_01/gpu_optimized_rag.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "Debug Korean Optimized RAG",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/simul_01/korean_optimized_rag.py", 
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        }
+    ]
+}

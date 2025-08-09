@@ -1,0 +1,28 @@
+{
+  "gpu_servers": [
+    {
+      "name": "gpu-server-1",
+      "host": "gpu1.example.com",
+      "user": "your_username",
+      "remote_path": "/home/your_username/rag_api_demo",
+      "gpus": 4,
+      "description": "Main GPU server with 4x RTX 4090"
+    },
+    {
+      "name": "gpu-server-2", 
+      "host": "gpu2.example.com",
+      "user": "your_username",
+      "remote_path": "/home/your_username/rag_api_demo",
+      "gpus": 2,
+      "description": "Secondary GPU server with 2x RTX 3090"
+    }
+  ],
+  "sync_excludes": [
+    "venv/",
+    "__pycache__/",
+    ".git/",
+    "result/*",
+    "*.pyc",
+    ".env"
+  ]
+}

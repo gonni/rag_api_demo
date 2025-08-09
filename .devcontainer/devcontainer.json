@@ -1,0 +1,75 @@
+{
+    "name": "RAG API Demo - GPU Development",
+    "dockerFile": "../Dockerfile.gpu",
+    "context": "..",
+    
+    // GPU 지원 설정
+    "runArgs": [
+        "--gpus", "all",
+        "--shm-size=2g"
+    ],
+    
+    // 포트 포워딩
+    "forwardPorts": [8000, 11434, 8888],
+    "portsAttributes": {
+        "8000": {
+            "label": "FastAPI Server",
+            "onAutoForward": "notify"
+        },
+        "11434": {
+            "label": "Ollama Server", 
+            "onAutoForward": "silent"
+        },
+        "8888": {
+            "label": "Jupyter Lab",
+            "onAutoForward": "openBrowser"
+        }
+    },
+    
+    // 볼륨 마운트
+    "mounts": [
+        "source=${localWorkspaceFolder}/data,target=/app/data,type=bind",
+        "source=${localWorkspaceFolder}/result,target=/app/result,type=bind",
+        "source=${localWorkspaceFolder}/code_dev,target=/app/code_dev,type=bind"
+    ],
+    
+    // 환경 변수
+    "containerEnv": {
+        "CUDA_VISIBLE_DEVICES": "0",
+        "PYTHONPATH": "/app"
+    },
+    
+    // VS Code 설정
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/bin/python",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": false,
+                "python.formatting.provider": "none",
+                "python.formatting.blackPath": "/usr/local/bin/black",
+                "files.watcherExclude": {
+                    "**/venv/**": true,
+                    "**/__pycache__/**": true
+                },
+                "terminal.integrated.defaultProfile.linux": "bash"
+            },
+            
+            // 확장 프로그램
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-python.black-formatter",
+                "ms-vscode.vscode-json",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    
+    // 컨테이너 생성 후 실행할 명령
+    "postCreateCommand": "pip install -r requirements_gpu.txt && pip install jupyterlab black",
+    
+    // 사용자 설정
+    "remoteUser": "root",
+    "workspaceFolder": "/app"
+}
