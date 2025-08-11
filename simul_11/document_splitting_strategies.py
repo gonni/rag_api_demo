@@ -550,7 +550,8 @@ def main():
     runner.print_results_summary(results)
     
     # 결과 저장
-    output_path = "simul_11/experiment_results.pkl"
+    os.makedirs("results", exist_ok=True)
+    output_path = "results/experiment_results.pkl"
     with open(output_path, "wb") as f:
         pickle.dump(results, f)
     print(f"\n💾 결과 저장됨: {output_path}")
