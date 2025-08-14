@@ -9,7 +9,8 @@
         "**/venv/**": true,
         "**/__pycache__/**": true,
         "**/result/**": true,
-        "**/.git/**": true
+        "**/.git/**": true,
+        "**/target": true
     },
     "search.exclude": {
         "**/venv/**": true,
